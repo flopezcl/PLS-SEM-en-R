@@ -80,6 +80,14 @@ table(pls_data2$REGION)
 pls_data2$REGION =ifelse(pls_data2$REGION=='BiobÃ­o', 'Bio-Bio', pls_data2$REGION)
 ```
 
+Crear o modificar el tipo de dato dejándolo como Numerico
+
+```
+pls_data2$AA <- as.integer(pls_data2$BORN)  #AA es el nuevo campo a crear extraido desde BORN.
+
+pls_data2$TRI1 <- as.integer(pls_data2$TRI1) #En este caso estamos modificamos un campo existente sin crear uno nuevo. 
+```
+
 # B. Estadistica descriptiva
 
 ## B.1 Gráficos tablas
