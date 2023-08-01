@@ -18,10 +18,8 @@ date: "julio de 2023"
 #install.packages("psych")
 library(seminr)
 library(xlsx)
-
 library(cSEM)
 library(genpathmox)
-
 library('psych')
 
 ```
