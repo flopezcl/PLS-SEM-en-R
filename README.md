@@ -1,4 +1,4 @@
-# PLS-SEM en R
+# Guía de PLS-SEM en R
 Los modelos de ecuaciones estructurales (SEM) se han convertido en una de las principales técnicas de análisis multivariados utilizados en ciencias sociales. Esta técnica combina el uso de variables latentes (no observadas) con datos provenientes de medidas usados como insumos para el análisis de causalidad (Williams et al., 2009).
 
 Los métodos SEM permiten modelizar relaciones entre variables predictoras y criterios; incorporar variables latentes, medidas por medio de indicadores y testear estadísticamente teorías con datos empíricos. 
@@ -15,6 +15,14 @@ Para ello se utilizará como referencia la investigación de Ramirez-Correa et a
 
 Cabe señalar que este trabajo no corresponde a un curso de PLS-SEM, de su forma de trabajo o de los reportes a informar en las investigaciones, siendo el alcance el mostrar la forma de trabajar y obtener los principales reportes de dichos modelos en R Studio, esto ya que existen múltiples documentos con guías básicas de trabajo, de reportes a ser incluidos y ejecución en distintas herramientas tales como (Becker et al., 2023; Guenther et al., 2023; Hair et al., 2019; Hair, Hult, Ringle, & Sarstedt, 2017; Latan & Noonan, 2017; Marin-Garcia & Alfalla-Luque, 2019; Ringle et al., 2020).
 
+##	Metodología
+Nuestro objetivo es replicar un análisis de PLS-SEM utilizando R Studio, generando un script que facilite la comprensión de su ejecución. Como objetivo secundario nos hemos planteado el integrar al análisis de PLS-SEM, la generación de estadísticas descriptivas y una ampliación del análisis hacia modelos Pathmox y de los efectos de variables moderadoras y mediadoras. 
+
+Para lo anterior utilizaremos como base los datos e investigación realizada por Ramirez-Correa et al. (2023) ubicados en https://doi.org/10.1371/journal.pone.0284585.s001
+
+El paquete a utilizar para el análisis de ecuaciones estructurales será SeminR esto dado por la existencia del libro de Hair et al (2021), quienes crearon SmartPLS, así también, dado que, dicho paquete no utiliza la librería Lavaan consideramos que esto puede facilitar su uso inicial.  
+
+Acionalmente al libro antes citado se utilizará como fuente de información la investigación de Ray et al. (2022), la información del siguiente repositorio https://github.com/cran/seminr y la documentación de los paquetes a utilizar. 
 
 Este código permite:
 - Generar visualización de datos (estadística descriptiva);
@@ -26,8 +34,23 @@ Este código permite:
 - Análisis de constructo de segundo orden;
 - Análisis Pathmox. 
 
+## Secciones:
+Corresponden a los siguientes: 
+A. Carga Datos
+B. Análisis descriptivo
+C. Trabajar datos faltantes
+D. Convertir en categóricas y numéricas
+E. Modelo de Ecuaciones Estructurales
+F. Análisis de Mediación
+G. Predict PLS
+H. Análisis de Moderadores
+I. Comparación con otros modelos
+J. Análisis Multigrupo
+K. Análisis Segundo Orden
+L. Análisis Pathmox
 
-
+## Cita
+López, Felipe A., (2023). Guía de PLS-SEM en R. https://github.com/flopezcl/PLS-SEM-en-R
 
 Bibliografía
 
