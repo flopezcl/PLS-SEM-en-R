@@ -1,0 +1,2 @@
+# PLS-SEM
+ PLS-SEM en R
