@@ -18,7 +18,7 @@ Cabe señalar que este trabajo no corresponde a un curso de PLS-SEM, de su forma
 ##	Metodología
 Nuestro objetivo es replicar un análisis de PLS-SEM utilizando R Studio, generando un script que facilite la comprensión de su ejecución. Como objetivo secundario nos hemos planteado el integrar al análisis de PLS-SEM, la generación de estadísticas descriptivas y una ampliación del análisis hacia modelos Pathmox y de los efectos de variables moderadoras y mediadoras. 
 
-Para lo anterior utilizaremos como base los datos e investigación realizada por Ramirez-Correa et al. (2023) ubicados en https://doi.org/10.1371/journal.pone.0284585.s001
+Para lo anterior utilizaremos como base los datos e investigación realizada por Ramirez-Correa et al. (2023) ubicados en https://doi.org/10.1371/journal.pone.0284585.s001 (Se incluye en este repositorio como 2023.TRI_MGA.csv)
 
 El paquete a utilizar para el análisis de ecuaciones estructurales será SeminR esto dado por la existencia del libro de Hair et al (2021), quienes crearon SmartPLS, así también, dado que, dicho paquete no utiliza la librería Lavaan consideramos que esto puede facilitar su uso inicial.  
 
