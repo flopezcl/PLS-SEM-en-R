@@ -52,7 +52,7 @@ L. Análisis Pathmox
 ## Cita
 López, Felipe A., (2023). Guía de PLS-SEM en R. https://github.com/flopezcl/PLS-SEM-en-R
 
-Bibliografía
+# Bibliografía
 
 Becker, J.-M., Cheah, J.-H., Gholamzade, R., Ringle, C. M., & Sarstedt, M. (2023). PLS-SEM’s most wanted guidance. International Journal of Contemporary Hospitality Management, 35(1), 321–346. https://doi.org/10.1108/IJCHM-04-2022-0474
 
