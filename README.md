@@ -34,8 +34,16 @@ Este código permite:
 - Análisis de constructo de segundo orden;
 - Análisis Pathmox. 
 
-## Secciones:
-Corresponden a los siguientes: 
+## Archivos 
+1. Archivo de datos:  "2023.TRI_MGA.csv"
+   
+2. Ejemplo de resultados en html: "PLSSEM_en_R-VF.html"
+   
+3. Carpeta con reportes generados en la ejecución: "PLSSEM_en_R-VF_files"
+ 
+4. Códigos de ejecución: "Guía de PLS-SEM en R - Markdown.md"
+
+### Incluye las siguientes secciones: 
 
 A. Carga Datos
 
