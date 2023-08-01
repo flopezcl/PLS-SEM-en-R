@@ -43,6 +43,8 @@ Este código permite:
  
 4. Códigos de ejecución: "Guía de PLS-SEM en R - Markdown.md"
 
+5. Códigos en R separados por secciones: carpeta "Codigos_separados"
+
 ### Incluye las siguientes secciones: 
 
 A. Carga Datos
