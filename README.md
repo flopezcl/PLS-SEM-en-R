@@ -69,7 +69,7 @@ K. Análisis Segundo Orden
 
 L. Análisis Pathmox
 
-## Cita
+## Favor citar como:
 López, Felipe A., (2023). Guía de PLS-SEM en R. https://github.com/flopezcl/PLS-SEM-en-R
 
 # Bibliografía
