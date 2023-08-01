@@ -36,17 +36,29 @@ Este código permite:
 
 ## Secciones:
 Corresponden a los siguientes: 
+
 A. Carga Datos
+
 B. Análisis descriptivo
+
 C. Trabajar datos faltantes
+
 D. Convertir en categóricas y numéricas
+
 E. Modelo de Ecuaciones Estructurales
+
 F. Análisis de Mediación
+
 G. Predict PLS
+
 H. Análisis de Moderadores
+
 I. Comparación con otros modelos
+
 J. Análisis Multigrupo
+
 K. Análisis Segundo Orden
+
 L. Análisis Pathmox
 
 ## Cita
