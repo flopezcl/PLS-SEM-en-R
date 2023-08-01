@@ -1,28 +1,7 @@
 ---
-title: "PLS-SEM en R. Guía"
+title: "Guía de PLS-SEM en R"
 author: "Felipe A. López"
 date: "julio de 2023"
-output:
-  html_document:
-    toc: true  #Tabla de contenido
-    toc_depth: 3   #Niveles de la tabla de contenido
-    toc_float: true  # Tabla de contenido presente en todo el doc.
-    collapsed: true  #Colapsar la tabla 
-    smooth_scroll: true  #cada seccion en que este me avisa
-    theme: yeti   
-    highlight: kate   #Cómo de presentarán los codigo
-    df_print: paged   #Data frame
-    code_folding: show  #boton hide
-    always_allow_html: true
-  pdf_document:
-    toc: true
-    toc_depth: 3
-    latex_engine: xelatex
-    number_sections: yes
-  word_document: default
-  github_document: default
-editor_options:
-  chunk_output_type: console
 ---
 
 **NOTA:** Se entiende que usted maneja los conceptos básicos de Ecuaciones estructurales y que realizó la limpieza y validación de sus datos.
