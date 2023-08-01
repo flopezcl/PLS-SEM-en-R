@@ -16,6 +16,18 @@ Para ello se utilizará como referencia la investigación de Ramirez-Correa et a
 Cabe señalar que este trabajo no corresponde a un curso de PLS-SEM, de su forma de trabajo o de los reportes a informar en las investigaciones, siendo el alcance el mostrar la forma de trabajar y obtener los principales reportes de dichos modelos en R Studio, esto ya que existen múltiples documentos con guías básicas de trabajo, de reportes a ser incluidos y ejecución en distintas herramientas tales como (Becker et al., 2023; Guenther et al., 2023; Hair et al., 2019; Hair, Hult, Ringle, & Sarstedt, 2017; Latan & Noonan, 2017; Marin-Garcia & Alfalla-Luque, 2019; Ringle et al., 2020).
 
 
+Este código permite:
+- Generar visualización de datos (estadística descriptiva);
+- Análisis de PLS-SEM y PLS predict;
+- Análisis de efectos mediadores;
+- Análisis de efectos moderadores;
+- Comparación entre diferentes modelos
+- Análisis de multigrupo;
+- Análisis de constructo de segundo orden;
+- Análisis Pathmox. 
+
+
+
 
 Bibliografía
 
