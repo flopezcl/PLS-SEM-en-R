@@ -1,5 +1,5 @@
-# L. Analisis Pathmox
-#utilizamos libreria especifica para este tipo de análisis
+# L. Análisis Pathmox
+#utilizamos librería específica para este tipo de análisis
 library(genpathmox)
 
 ## L.1. Definición modelo
@@ -24,18 +24,18 @@ SNS =~ U1 + U2+ U3 + U4
 
 
 ## L.2. Análisis con cSEM
-#Debo estimar el modelo con la libreria cSem 
+#Debo estimar el modelo con la librería cSem 
 library(cSEM)
 
 est_model <- csem(.data = pls_data2, .model = cSmodel)
 bootstrap<- csem(.data = pls_data2, .model = cSmodel, 
                  .resample_method = "bootstrap", 
-                 .R = 1000)  #cantidad de iteraciones >2000
+                 .R = 1000)  #cantidad de iteraciones >5000
 
 
 ## L.3. Configurando las variables
-#Configuro las variables que iran en el pathmox 
-#estas deben ser del tipo factor. (ver script D. )
+#Configuro las variables que irán en el pathmox 
+#estas deben ser del tipo factor (ver script D. )
 
 
 pls_data2$GENDER2= as.factor(pls_data2$GENDER)
@@ -51,17 +51,20 @@ pls_data2$SOC2= as.factor(pls_data2$SOC)
 # Creamos una variable TRI_T que señale al tipo dentro de TRI al que pertenece el usuario. 
 #TRI define 4 indices y el mayor define la categoría del usuario
 
+# Sumamos valores por tipo de TRI
 pls_data2$TRI_A = pls_data2$TRI1 + pls_data2$TRI2 + pls_data2$TRI3 + pls_data2$TRI4
 pls_data2$TRI_B = pls_data2$TRI5 + pls_data2$TRI6 + pls_data2$TRI7 + pls_data2$TRI8
 pls_data2$TRI_C = pls_data2$TRI9 + pls_data2$TRI10 + pls_data2$TRI11 + pls_data2$TRI12
 pls_data2$TRI_D = pls_data2$TRI13 + pls_data2$TRI14 + pls_data2$TRI15 + pls_data2$TRI16
+
+#Asignamos cada muestra a un tipo 
 pls_data2$TRI_T <- ifelse(pls_data2$TRI_B <= pls_data2$TRI_A & pls_data2$TRI_C <= pls_data2$TRI_A
                           & pls_data2$TRI_D <= pls_data2$TRI_A, 1, 
                           ifelse (pls_data2$TRI_A <= pls_data2$TRI_B & pls_data2$TRI_C <= pls_data2$TRI_B
                                   & pls_data2$TRI_D <= pls_data2$TRI_B, 2, 
                                   ifelse (pls_data2$TRI_A < pls_data2$TRI_C & pls_data2$TRI_B <= pls_data2$TRI_C
                                           & pls_data2$TRI_D <= pls_data2$TRI_C, 3, 4)))
-pls_data2$TRI_T3= pls_data2$TRI_T
+#Convertimos a factor
 pls_data2$TRI_T2= as.factor(pls_data2$TRI_T)
 
 
@@ -76,19 +79,19 @@ categoricas2 <- c( #"EXP2",   #Esta variable se ha comentado ya que incluirla im
 CSIcatvar <- pls_data2[, categoricas2]
 
 
-## L.4. Generacion modelo y resultado
+## L.4. Generación modelo y resultado
 
-#Ejecutar análisis Phatmox (Lamberti et al., 2016; 2017)
+#Ejecutar análisis Phatmox (ver Lamberti et al., 2016; 2017)
 
 
 csi.pathmox <- pls.pathmox(
   .model = cSmodel ,  #Modelo de medida y estructural a utilizar 
   .data  = pls_data2,   #Data para estimar Modelo de medida y estructural
-  .catvar= CSIcatvar,  ## Datos con variables categoricas a ser utilizadas 
-  .size = 0.10, #minimo de observaciones en porcentaje
-  .size_candidate = 15, #minimo de observaciones en cantidad  por defecto es 50
+  .catvar= CSIcatvar,  ## Datos con variables categóricas a ser utilizadas 
+  .size = 0.10, #mínimo de observaciones en porcentaje
+  .size_candidate = 15, #mínimo de observaciones en cantidad  por defecto es 50
   .alpha = 0.05,   ### umbral mínimo de importancia  defecto 0.05
-  .deep = 8        ### Maxima profundidad de los arboles
+  .deep = 8        ### Máxima profundidad de los arboles
 ) 
 
 

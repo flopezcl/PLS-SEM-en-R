@@ -11,7 +11,7 @@ summary_estimacion_model$total_indirect_effects
 
 specific_effect_significance(boot_estimacion,  ###Boot
                              from ='FC',
-                             through = 'IU',  ### Mediador, podría ser un vertor del tipo c('construct1', 'construct2')).
+                             through = 'IU',  ### Mediador, podría ser un vector del tipo c('construct1', 'construct2')).
                              to = 'SNS',
                              alpha = 0.05)
 
@@ -36,7 +36,7 @@ sum_boot$total_indirect_effects #Null implica no efecto
 summary_estimacion_model$paths
 sum_boot$bootstrapped_paths 
 
-#FC ==> SNS No significativo ==> No effecto
+#FC ==> SNS  No significativo ==> No efecto
 #HA ==> SNS  Significativo  ==> Evaluar si es complementario (0<) o competitivo (0>)
 
 ### F.2.2 Paso 2: tipo de mediación

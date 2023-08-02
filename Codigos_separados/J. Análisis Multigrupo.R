@@ -1,10 +1,10 @@
 # J. Análisis Multigrupo (MGA)
 
-#Asumiremos que se desea crear multigrupo con la variable género y Región
+#Asumiremos que se desea crear multigrupo con la variable género y región
 
 #*NOTA:* Solo se puede hacer multigrupo de 2 grupos. Más grupos no es posible en esta versión.
 
-#*NOTA2: En este ejemplo Cambiaremos el modelo estructural para que MGA sea significativo* 
+#*NOTA2: En este ejemplo cambiaremos el modelo estructural para que MGA sea significativo* 
   
 
 modelo_estruc_mga <- relationships(
@@ -38,16 +38,16 @@ sum(pls_data2$GENERO==2)
 
 ## J.2. Generamos el multigrupo
 
-#En este caso probaremos 2 MGA uno con el Género y otro con la región
+#En este caso probaremos 2 MGA uno con el género y otro con la región
 #Función estimate_pls_mga() es usada para crear el multigrupo, indicando el grupo inicial. 
 
 pls_mga <- estimate_pls_mga(mga_esti, 
                             pls_data2$GENERO == 1,   #criterio de selección grupo. indicamos uno de los 2 grupos
-                            nboot=500) ## sobre 2000
+                            nboot=500) ## sobre 5000
 
 pls_mga_region <- estimate_pls_mga(mga_esti, 
                                    pls_data2$REGION3 == 1, 
-                                   nboot=500) ## sobre 2000
+                                   nboot=500) ## sobre 5000
 
 ## J.3. Análisis del Multigrupo
 
@@ -124,10 +124,10 @@ csem_results2 <- csem(.data = g12, cSmodel2)
 #Nota: La data no debe contener el caracter "." ni en nombre de columnas ni en datos. 
 
 #Si en Status da "not Ok", no se puede usar para MGA
-verify(csem_results1) # impica corregir el modelo
+verify(csem_results1) # implica corregir el modelo
 verify(csem_results2)
 
-## Analisis con cSEM
+## Análisis con cSEM
 csem_results3 <- csem(.data = g21, cSmodel2)
 csem_results4 <- csem(.data = g22, cSmodel2)
 
@@ -139,22 +139,22 @@ verify(csem_results4)
 #Generamos Test MICOM
 # Ejecutamos modelo y luego evaluamos significancia con testMICOM()
 csem_results <- csem(.data = list("group1" = g11, "group2" = g12), # Data creada por grupo
-                     cSmodel2, .resample_method = "bootstrap",  #modelo y metodo
+                     cSmodel2, .resample_method = "bootstrap",  #modelo y método
                      .R = 500) ##Subir numero minimo 5000
 
 
 testMICOM(csem_results, 
-          .R = 500)  ##Subir numero no menos de 5000
+          .R = 500)  ##Subir número no menos de 5000
 
 
-# con función testMGD ejecutamos una bateria de Test de comparacion de MGA
+# con función testMGD ejecutamos una batería de Test de comparación de MGA
 
 testmgd <- testMGD(csem_results,  #Modelo ejecutado
                    .parameters_to_compare = NULL, #Podría compararse con otro modelo generado
                    .alpha = 0.05,
                    .approach_p_adjust = c("none", "bonferroni"),   ## Tipo de ajuste a los p
                    .R_permutation         = 60,
-                   .R_bootstrap = 60,  #Subir numero a 2000
+                   .R_bootstrap = 60,  #Subir número a 5000
                    .saturated             = FALSE,
                    .approach_mgd = "all", #test a aplicar "all = todos"
                    .output_type           = "complete", #"c("complete", "structured"),

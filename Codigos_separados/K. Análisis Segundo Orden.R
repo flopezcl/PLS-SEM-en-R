@@ -63,12 +63,12 @@ plot(estimacion_model_1)
 
 plot(summary_m_1$reliability, title =  "Fig. : Fiabilidad orden inferior")
 
-plot(summary_m_1$paths[,1], pch = 2, col = "red", main="Betas y R^2 (Exogenos)", 
+plot(summary_m_1$paths[,1], pch = 2, col = "red", main="Betas y R^2 (Exógenos)", 
      xlab = "Variables", ylab = "Valores estimados", xlim = c(0,length(row.names(summary_m_1$paths))+1)
 ) 
 text(summary_m_1$paths[,1],labels = row.names(summary_m_1$paths) , pos = 4)
 
-plot(summary_m_1$paths[,2], pch = 2, col = "red", main="Betas y R^2 (Endogenos)", 
+plot(summary_m_1$paths[,2], pch = 2, col = "red", main="Betas y R^2 (Endógenos)", 
      xlab = "Variables", ylab = "Valores estimados" , xlim = c(0,length(row.names(summary_m_1$paths))+1) )
 text(summary_m_1$paths[,2],labels = row.names(summary_m_1$paths) , pos = 4)
 
@@ -92,8 +92,8 @@ m_medida_3 <- constructs(
   composite('TRI_C', multi_items('TRI', 9:12), weights = mode_B),
   composite('TRI_D', multi_items('TRI', 13:16), weights = mode_B),
   higher_composite('TRI', c('TRI_A', 'TRI_B', 'TRI_C', 'TRI_D'),  #Señalamos el constructo de orden superior
-                   method ='two stage',                           #Metodo de analisis 
-                   weights = mode_B),                             # Formativo o reflectivo mode_b Formativo  mode_A reflectivo
+                   method ='two stage',                           #Método de análisis 
+                   weights = mode_B),                             #Formativo o reflectivo mode_B Formativo  mode_A reflectivo
   composite('IU', multi_items('IU', 1:2)),
   composite('SNS', multi_items('U', 1:4)) 
 )
@@ -133,7 +133,7 @@ estimacion_model_2 <- estimate_pls(data = pls_data2,
                                    structural_model = m_estruc_2,   # K.2.2.
                                    inner_weights = path_weighting,  
                                    # path_weighting para path weighting (default) o path_factorial para factor weighting,
-                                   missing = mean_replacement, #Reemplazar los valores perdido mean es default
+                                   missing = mean_replacement, #Reemplazar los valores perdidos. mean es default
                                    missing_value = '-99' )
 
 plot(estimacion_model_2)
@@ -148,7 +148,7 @@ estimacion_model_3 <- estimate_pls(data = pls_data2,
                                    structural_model = m_estruc_2,   # K.2.2.
                                    inner_weights = path_weighting,  
                                    # path_weighting para path weighting (default) o path_factorial para factor weighting,
-                                   missing = mean_replacement, #Reemplazar los valores perdido mean es default
+                                   missing = mean_replacement, #Reemplazar los valores perdidos. mean es default
                                    missing_value = '-99' )
 
 plot(estimacion_model_3)
@@ -211,12 +211,12 @@ sum_boot_m_2$bootstrapped_paths
 
 plot(summary_m_3$reliability, title =  "Fig. : Fiabilidad orden inferior")
 
-plot(summary_m_3$paths[,1], pch = 2, col = "red", main="Betas y R^2 (Exogenos)", 
+plot(summary_m_3$paths[,1], pch = 2, col = "red", main="Betas y R^2 (Exógenos)", 
      xlab = "Variables", ylab = "Valores estimados", xlim = c(0,length(row.names(summary_m_3$paths))+1)
 ) 
 text(summary_m_3$paths[,1],labels = row.names(summary_m_3$paths) , pos = 4)
 
-plot(summary_m_3$paths[,2], pch = 2, col = "red", main="Betas y R^2 (Endogenos)", 
+plot(summary_m_3$paths[,2], pch = 2, col = "red", main="Betas y R^2 (Endógenos)", 
      xlab = "Variables", ylab = "Valores estimados" , xlim = c(0,length(row.names(summary_m_3$paths))+1) )
 text(summary_m_3$paths[,2],labels = row.names(summary_m_3$paths) , pos = 4)
 

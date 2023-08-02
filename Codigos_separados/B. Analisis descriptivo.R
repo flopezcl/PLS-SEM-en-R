@@ -1,4 +1,4 @@
-# B. Estadistica descriptiva
+# B. Estadística descriptiva
 
 ## B.1 Gráficos tablas
 
@@ -80,7 +80,7 @@ hist(pls_data2$BORN, main = "Histograma Año nacimiento",
      border = "black")
 
 #Obtención de Simetria y Curtosis de los años de nacimiento 
-library('psych') # Utilizamos libreria Psych
+library('psych') # Utilizamos librería Psych
 skew(pls_data2$BORN,) # Simetría
 kurtosi(pls_data2$BORN,) #Curtosis
 multi.hist(pls_data2$BORN,dcol= c("blue","red"),dlty=c("dotted", "solid")) 
@@ -109,11 +109,11 @@ plot(densidad_EXP,
      xlab = "Años Exp",
      ylab = "Densidad")
 
-#Obtención de Simetria y Curtosis de los años de experiencia 
+#Obtención de Simetría y Curtosis de los años de experiencia 
 skew(pls_data$EXP) # Simetría
 kurtosi(pls_data$EXP) #Curtosis
 
-#Gráfico 9 Doble entrada Género y región
+#Gráfico 9 Doble entrada género y región
 tabla1 <- table(pls_data2$REGION, pls_data2$GENDER) 
 barplot(tabla1,
         main = "Gráfico por Género y Región",
@@ -124,13 +124,13 @@ barplot(tabla1,
 
 
 ### B.1.3 Gráfico de distribución y doble entrada
-#Gráfico 10 Mosaico distribución de Género y generación
+#Gráfico 10 Mosaico distribución de género y generación
 tabla2 <- table(pls_data2$GENERATION, pls_data2$GENDER)   
 
 mosaicplot(tabla2, main = "Mosaico de Género y edad",
            color = TRUE)
 
-#Gráfico 11 Doble entrada Género y nivel socioeconomico
+#Gráfico 11 Doble entrada generación y nivel socioeconomico
 tabla3 <- table(pls_data2$SOC, pls_data2$GENERATION)          
 barplot(tabla3,
         main = "Gráfico por Generación y Nivel socioeconomico",
@@ -144,7 +144,7 @@ barplot(tabla3,
 
 names(pls_data)  ### Ver los nombres de las columnas 
 str(pls_data) ### Tipo de datos
-#Separamos variables Demograficas
+#Separamos variables Demográficas
 categoricas <- c( 'EDU', 'SOC', 'WSTATUS', 'RETIRED', 'GENDER', 'GENERATION', 'REGION' )
 
 #Separamos variables del cuestionario utilizado
@@ -161,7 +161,7 @@ print(resumen)
 
 
 #Exportar a Excel con datos resumen
-library(xlsx)   # Utilizamos libreria para exportar datos a excel
+library(xlsx)   # Utilizamos librería para exportar datos a excel
 write.xlsx2(x=resumen,   #Datos a exportar
             'resumen.xlsx',  #nombre del archivo excel
             sheetName = "resumen",  #nombre de la hoja 

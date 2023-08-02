@@ -6,10 +6,10 @@
 predict_modelo <- predict_pls(
   model = estimacion_model,   ### modelo estimado (no Boot)  E.3
   technique = predict_DA,           
-  # direct antecedent (predict_DA) consideraría tanto el antecedente como el mediador pedictor del constructo
+  # direct antecedent (predict_DA) consideraría tanto el antecedente como el mediador predictor del constructo
   # earliest antecedent (predict_EA) mediador se excluiría del análisis
   noFolds = 10,                     ### Folds a generar
-  reps = 10)                        ### Numero de repeticiones CV
+  reps = 10)                        ### Número de repeticiones CV
 
 #sum_predict_modelo
 sum_predict_modelo <- summary(predict_modelo)

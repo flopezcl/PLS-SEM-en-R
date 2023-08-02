@@ -18,7 +18,7 @@ nan(pls_data)
 
 ## C.2 Reemplazar datos faltantes por -99
 
-#A continuación reemplazaremos los datos faltantes por -99, este valor será el que utilizaremos en el algoritmo.
+#A continuación reemplazaremos los datos faltantes por -99, este valor será el que utilizaremos en el algoritmo de PLS-SEM
 
 reemp_falt <- function(df) {
   for (i in 1:length(df)) {
@@ -38,6 +38,6 @@ pls_data2 <-reemp_falt(pls_data2)
 #Eliminar los Datos que no se desea utilizar
 
 
-pls_data2$PE1 == "-99"  #Buscar un dato en una columna especifica
+pls_data2$PE1 == "-99"  #Buscar un dato en una columna específica
 pls_data2 <- pls_data2[(pls_data2$PE1 != "-99"),]  #Eliminación de esos datos del dataset
 

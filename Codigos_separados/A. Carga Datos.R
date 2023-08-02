@@ -1,6 +1,6 @@
 # A. Carga de libreria y directorio a trabajar
 
-## A.1 Carga de librerias
+## A.1 Carga de librerías
 
 # install.packages('seminr')
 # install.packages('xlsx')
@@ -38,8 +38,8 @@ dim(pls_data)  ## Ver cantidad de filas y columnas
 # Ver cabecera de los datos y tipos
 head(pls_data)  ### Primeros datos
 str(pls_data) ### Tipo de datos
-nrow(pls_data) ## numero filas
-ncol(pls_data) ## numero Columnas
+nrow(pls_data) ## número filas
+ncol(pls_data) ## número Columnas
 
 #Crearemos una copia de la tabla en la que haremos los cambios
   
@@ -62,8 +62,8 @@ pls_data2$REGION =ifelse(pls_data2$REGION=='BiobÃ­o', 'Bio-Bio', pls_data2$REG
 table(pls_data2$REGION) #Vemos composición de la tabla 
 
 
-#Crear o modificar el tipo de dato dejándolo como Numerico
+#Crear o modificar el tipo de dato dejándolo como númerico
 
-pls_data2$AA <- as.integer(pls_data2$BORN)  #AA es el nuevo campo a crear extraido desde BORN.
+pls_data2$AA <- as.integer(pls_data2$BORN)  #AA es el nuevo campo a crear extraído desde BORN.
 
 pls_data2$TRI1 <- as.integer(pls_data2$TRI1) #En este caso estamos modificamos un campo existente sin crear uno nuevo. 

@@ -2,7 +2,7 @@
 
 ## H.1. Modelo de medida Moderadores
 
-#Creamos un modelo de medida con mediadores
+#Creamos un modelo de medida con moderadores
 #Asumimos que el constructo TRI_A y TRI_B media al moderador IU y FC respectivamente
 # Incluye el concepto interaction_term()
 
@@ -60,20 +60,20 @@ save_plot("fig 6.Bootstrap Modelo Estimado Moderador.pdf")
 
 ## H.4. Evaluar el modelo Moderador
 
-### H.4.1. R^2 Exogenos
+### H.4.1. R^2 Exógenos
 
 sum_pls_model_mod_med$paths  
 
-#Exogenos
+#Exógenos
 
-plot(sum_pls_model_mod_med$paths[,1], pch = 2, col = "red", main="Betas y R^2 moderador (Exogenos)", 
+plot(sum_pls_model_mod_med$paths[,1], pch = 2, col = "red", main="Betas y R^2 moderador (Exógenos)", 
      xlab = "Variables", ylab = "Valores estimados", xlim = c(0,length(row.names(sum_pls_model_mod_med$paths))+1)) 
 text(sum_pls_model_mod_med$paths[,1],labels = row.names(sum_pls_model_mod_med$paths) , pos = 4)
 
 
-#Endogenos
+#Endógenos
 
-plot(sum_pls_model_mod_med$paths[,2], pch = 2, col = "red", main="Betas y R^2 moderador (Endogenos)", 
+plot(sum_pls_model_mod_med$paths[,2], pch = 2, col = "red", main="Betas y R^2 moderador (Endógenos)", 
      xlab = "Variables", ylab = "Valores estimados" , xlim = c(0,length(row.names(sum_pls_model_mod_med$paths))+1))
 text(sum_pls_model_mod_med$paths[,2],labels = row.names(sum_pls_model_mod_med$paths) , pos = 4)
 
@@ -223,7 +223,7 @@ write.xlsx2(x=sum_pls_model_mod_med$descriptives$correlations$constructs,
 
 #d\) Puntuaciones estimadas para los constructos
 
-#e\) seleccion de modelo BIC, AIC
+#e\) Selección de modelo BIC, AIC
 
 sum_pls_model_mod_med$total_effects              ## b)
 sum_pls_model_mod_med$total_indirect_effects     ## c)

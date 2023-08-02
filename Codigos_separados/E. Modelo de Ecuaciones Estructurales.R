@@ -1,4 +1,4 @@
-# E. Modelo de ecuaciones estructuales (semir)
+# E. Modelo de ecuaciones estructurales (semir)
 
 ## E.1 Crear el modelo de medida
 
@@ -10,7 +10,7 @@
 # Utilizamos función constructs() e indicamos cada constructos y sus items.
 # en el primer caso corresponde al constructo PE que lo conforman 4 items PE1, PE2, PE3 y PE4
 
-library(seminr) #Utilizamos libreria semir 
+library(seminr) #Utilizamos librería semir 
 
 # 
 #modelo_medida <- constructs(
@@ -23,7 +23,7 @@ library(seminr) #Utilizamos libreria semir
 #  #composite('CUSA', single_item('cusa')),  # Si solo un item dejar como single_item Ej. CUSA lo forma cusa
 #  composite('IU', multi_items('IU', 1:2)),
 #  composite('SNS', multi_items('U', 1:4)) 
-#  #composite('SNS', c('U1', 'U2', 'U3', 'U4')) #Forma alternativa de agregar item especificos
+#  #composite('SNS', c('U1', 'U2', 'U3', 'U4')) #Forma alternativa de agregar item específicos
 #)
 
 ## Reflectivo = mode_A  (default)
@@ -37,7 +37,7 @@ library(seminr) #Utilizamos libreria semir
 
 
 ### E.1.2 PLS Consistente  
-#NOta: Modelo PLS Consistente trabaja solo con reflectivos e implica una forma distinta de calcular el algoritmo. 
+#NOta: Modelo PLS Consistente trabaja solo con reflectivos. 
 
 
 modelo_medida <- constructs(
@@ -50,7 +50,7 @@ modelo_medida <- constructs(
   # composite('CUSA', single_item('cusa')), # Si solo un item dejar como single_item Ej. CUSA lo forma cusa
   reflective('IU', multi_items('IU', 1:2)),
   reflective('SNS', multi_items('U', 1:4)) 
-  #composite('SNS', c('U1', 'U2', 'U3', 'U4')) #Forma alternativa de agregar item especificos
+  #composite('SNS', c('U1', 'U2', 'U3', 'U4')) #Forma alternativa de agregar item específicos
 )
 
 plot(modelo_medida)   #Ver el modelo 
@@ -65,7 +65,7 @@ modelo_estruc <- relationships(
   paths(from = c('FC', 'HA', "IU"), to = c('SNS'))
 )
 
-## ----- Generamos el modelo con colores
+## ----- Generamos el modelo con colores estandar de Smarpls
 thm <- seminr_theme_create(plot.rounding = 2,  ## Decimales
                            plot.adj = FALSE, 
                            sm.node.fill = "cadetblue1",
@@ -86,10 +86,10 @@ save_plot("fig2.Modelo_Estructural.pdf")
 estimacion_model <- estimate_pls(data = pls_data2,   #Conjunto de datos a trabajar
                                  measurement_model = modelo_medida,  # Modelo de medida
                                  structural_model = modelo_estruc,   # Modelo estructural
-                                 inner_weights = path_weighting,     #calculo de los path
+                                 inner_weights = path_weighting,     #cálculo de los path
                                  # path_weighting para path weighting (default) o path_factorial para factor weighting,
-                                 missing = mean_replacement, #Reemplazar los valores perdido mean es default
-                                 missing_value = '-99' ) # Valores perdidos
+                                 missing = mean_replacement, #Reemplazar los valores perdidos. defecto es mean
+                                 missing_value = '-99' ) # indicador de Valores perdidos
 #obtención de resultados
 summary_estimacion_model <- summary(estimacion_model)                                      
 
@@ -102,7 +102,7 @@ save_plot("fig3.Modelo_Estimado.pdf")
 
 ### E.4.1. Valores perdidos y estadisticas de cada variable
 
-summary_estimacion_model$descriptives$statistics  ## Valores perdidos y estadisticas variables 
+summary_estimacion_model$descriptives$statistics  ## Valores perdidos y estadísticas de las variables 
 
 #Exportar datos a Excel
 x <- summary_estimacion_model$descriptives$statistics
@@ -142,17 +142,17 @@ summary_estimacion_model$iterations
 
 summary_estimacion_model$paths  
 
-# Gráficos Exogenos
+# Gráficos Exógenos
   
 
-plot(summary_estimacion_model$paths[,1], pch = 2, col = "red", main="Betas y R^2 (Exogenos)", 
+plot(summary_estimacion_model$paths[,1], pch = 2, col = "red", main="Betas y R^2 (Exógenos)", 
      xlab = "Variables", ylab = "Valores estimados", xlim = c(0,length(row.names(summary_estimacion_model$paths))+1)) 
 text(summary_estimacion_model$paths[,1],labels = row.names(summary_estimacion_model$paths) , pos = 4)
 
 
-# Gráficos Endogenos
+# Gráficos Endógenos
   
-plot(summary_estimacion_model$paths[,2], pch = 2, col = "red", main="Betas y R^2 (Endogenos)", 
+plot(summary_estimacion_model$paths[,2], pch = 2, col = "red", main="Betas y R^2 (Endógenos)", 
      xlab = "Variables", ylab = "Valores estimados" , xlim = c(0,length(row.names(summary_estimacion_model$paths))+1))
 text(summary_estimacion_model$paths[,2],labels = row.names(summary_estimacion_model$paths) , pos = 4)
 
@@ -326,7 +326,7 @@ write.xlsx2(x=summary_estimacion_model$descriptives$correlations$constructs  ,
 
 # d\) Puntuaciones estimadas para los constructos
 
-# e\) seleccion de modelo BIC, AIC
+# e\) Selección de modelo BIC, AIC
 
 
 summary_estimacion_model$total_effects              ## b)
@@ -341,7 +341,7 @@ summary_estimacion_model$it_criteria                ## e)
 boot_estimacion <- bootstrap_model(seminr_model = estimacion_model , #modelo estimado E.3  estimate_pls()
                 nboot = 500,                            ### N° Subsamples  >5000
                 cores = parallel::detectCores(),        #CPU cores -parallel processing - no obligatorio
-                seed = 123)                             #Semilla inicial - no obligatorio
+                seed = 123)                             #Fijar Semilla inicial - no obligatorio
 
 #Obtención de significancia del Bootstrap
 sum_boot <- summary(boot_estimacion,
