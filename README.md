@@ -37,7 +37,7 @@ Este código permite:
 ## Archivos 
 1. Archivo de datos:  "2023.TRI_MGA.csv"
    
-2. Ejemplo de resultados en html: "PLSSEM_en_R-VF.html"
+2. Ejemplo de resultados en html: "PLSSEM_en_R-VF.html" y pdf: "Guía de PLS-SEM en R.pdf"
    
 3. Carpeta con reportes generados en la ejecución: "PLSSEM_en_R-VF_files"
  
