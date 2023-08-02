@@ -136,5 +136,6 @@ Sarstedt, M., Hair, J. F., Cheah, J.-H., Becker, J.-M., & Ringle, C. M. (2019). 
 Sarstedt, M., & Moisescu, O.-I. (2023). Quantifying uncertainty in PLS-SEM-based mediation analyses. Journal of Marketing Analytics. https://doi.org/10.1057/s41270-023-00231-9
 
 Schamberger, T. (2023). Conducting Monte Carlo simulations with PLS-PM and other variance-based estimators for structural equation models: a tutorial using the R package cSEM. Industrial Management & Data Systems, 123(6), 1789–1813. https://doi.org/10.1108/IMDS-07-2022-0418
+
 Williams, L. J., Vandenberg, R. J., & Edwards, J. R. (2009). 12 Structural Equation Modeling in Management Research: A Guide for Improved Analysis. The Academy of Management Annals, 3(1), 543–604. https://doi.org/10.1080/19416520903065683
 
