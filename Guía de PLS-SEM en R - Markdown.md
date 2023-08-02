@@ -4,11 +4,11 @@ author: "Felipe A. López"
 date: "julio de 2023"
 ---
 
-**NOTA:** Se entiende que usted maneja los conceptos básicos de Ecuaciones estructurales y que realizó la limpieza y validación de sus datos.
+**NOTA:** Se entiende que usted maneja los conceptos básicos de ecuaciones estructurales y que realizó la limpieza y validación de sus datos.
 
-# A. Carga de libreria y directorio a trabajar
+# A. Carga de librería y directorio a trabajar
 
-## A.1 Carga de librerias
+## A.1 Carga de librerías
 
 ```{r message = FALSE, warning=FALSE}
 # install.packages(pkgs = 'seminr')
@@ -18,8 +18,10 @@ date: "julio de 2023"
 #install.packages("psych")
 library(seminr)
 library(xlsx)
+
 library(cSEM)
 library(genpathmox)
+
 library('psych')
 
 ```
@@ -28,7 +30,7 @@ library('psych')
 
 ### A.2.1 Carga de directorio de trabajo y datos
 
-Reemplace directorio
+Reemplace directorio:
 
 ```{r directorio}
 getwd()
@@ -80,15 +82,16 @@ table(pls_data2$REGION)
 pls_data2$REGION =ifelse(pls_data2$REGION=='BiobÃ­o', 'Bio-Bio', pls_data2$REGION)
 ```
 
-Crear o modificar el tipo de dato dejándolo como Numerico
+Crear o modificar el tipo de dato dejándolo como numérico
 
-```
-pls_data2$AA <- as.integer(pls_data2$BORN)  #AA es el nuevo campo a crear extraido desde BORN.
+```{r}
+pls_data2$AA <- as.integer(pls_data2$BORN)  #AA es el nuevo campo a crear extraído desde BORN.
 
 pls_data2$TRI1 <- as.integer(pls_data2$TRI1) #En este caso estamos modificamos un campo existente sin crear uno nuevo. 
+
 ```
 
-# B. Estadistica descriptiva
+# B. Estadística descriptiva
 
 ## B.1 Gráficos tablas
 
@@ -291,7 +294,7 @@ write.xlsx2(x=resumen,
 ## B.4 Tablas de frecuencias
 
 ```{r}
-xtabs(~EDU + GENDER, data =pls_data2) ## Educacion y Género
+xtabs(~EDU + GENDER, data =pls_data2) ## Educación y Género
 xtabs(~GENDER + WSTATUS, data =pls_data2) ##Género y Estatus Laboral
 xtabs(~GENDER + RETIRED, data =pls_data2) ##Género y Retirado
 xtabs(~GENDER + GENERATION, data =pls_data2) ## Género y Generación
@@ -337,7 +340,7 @@ reemp_falt <- function(df) {
 pls_data2 <-reemp_falt(pls_data2)
 ```
 
-## C.3 Eliminar datos faltantes o con una condicion
+## C.3 Eliminar datos faltantes o con una condición
 
 Eliminar los que se desea
 
@@ -348,7 +351,7 @@ pls_data2 <- pls_data2[(pls_data2$PE1 != "-99"),]
 
 # D. Crear una variable categórica desde otra variable
 
-## D.1 Convertir en categoricas
+## D.1 Convertir en categóricas
 
 ```{r}
 
@@ -380,7 +383,7 @@ pls_data2$GENERO3= pls_data2$GENERO
 #pls_data2$RETIRED2 = as.factor(pls_data2$RETIRED)
 ```
 
-# E. Modelo de ecuaciones estructuales (semir)
+# E. Modelo de ecuaciones estructurales (semir)
 
 ## E.1 Crear el modelo de medida
 
@@ -472,7 +475,7 @@ save_plot("fig2.Modelo_Estimado.pdf")
 
 ## E.4 Reportes modelo
 
-### E.4.1. Valores perdidos y estadisticas de cada variable
+### E.4.1. Valores perdidos y estadísticas de cada variable
 
 ```{r}
 summary_estimacion_model$descriptives$statistics  ## Valores perdidos y representación 
@@ -510,15 +513,15 @@ summary_estimacion_model$iterations
 
 ```
 
-### E.4.3. R^2
+### E.4.3. R\^2
 
-**Exogenos**
+**Exógenos**
 
 ```{r}
 
 summary_estimacion_model$paths  
 
-plot(summary_estimacion_model$paths[,1], pch = 2, col = "red", main="Betas y R^2 (Exogenos)", 
+plot(summary_estimacion_model$paths[,1], pch = 2, col = "red", main="Betas y R^2 (Exógenos)", 
      xlab = "Variables", ylab = "Valores estimados", xlim = c(0,length(row.names(summary_estimacion_model$paths))+1)
      ) 
 text(summary_estimacion_model$paths[,1],labels = row.names(summary_estimacion_model$paths) , pos = 4)
@@ -526,10 +529,10 @@ text(summary_estimacion_model$paths[,1],labels = row.names(summary_estimacion_mo
 
 ```
 
-**Endogenos**
+**Endógenos**
 
 ```{r}
-plot(summary_estimacion_model$paths[,2], pch = 2, col = "red", main="Betas y R^2 (Endogenos)", 
+plot(summary_estimacion_model$paths[,2], pch = 2, col = "red", main="Betas y R^2 (Endógenos)", 
      xlab = "Variables", ylab = "Valores estimados" , xlim = c(0,length(row.names(summary_estimacion_model$paths))+1) )
 text(summary_estimacion_model$paths[,2],labels = row.names(summary_estimacion_model$paths) , pos = 4)
 
@@ -720,7 +723,7 @@ c\) Efectos indirectos
 
 d\) Puntuaciones estimadas para los constructos
 
-e\) seleccion de modelo BIC, AIC
+e\) Selección de modelo BIC, AIC
 
 ```{r}
 summary_estimacion_model$total_effects              ## b)
@@ -835,9 +838,9 @@ summary_estimacion_model$total_indirect_effects
 #Evaluación de la significancia de los efectos indirectos. p1 * p2 es significante 
 
 specific_effect_significance(boot_estimacion,  ###Boot
-                             from ='FC',
-                             through = 'IU',  ### podría ser un vertor del tipo c('construct1', 'construct2')).
-                             to = 'SNS',
+                             from ='FC', #Desde
+                             through = 'IU',  #Mediador ## podría ser un vector del tipo c('construct1', 'construct2')).
+                             to = 'SNS', 
                              alpha = 0.05)
 
 specific_effect_significance(boot_estimacion,  ###Boot
@@ -862,7 +865,7 @@ Evaluar la significancia y luego para ver si es mediación full o parcial se rev
 summary_estimacion_model$paths
 sum_boot$bootstrapped_paths 
 
-#FC ==> SNS No significativo ==> No effecto
+#FC ==> SNS No significativo ==> No efecto
 #HA ==> SNS  Significativo  ==> Evaluar si es complementario (0<) o competitivo (0>)
 
 ```
@@ -889,10 +892,10 @@ summary_estimacion_model$paths['FC', 'SNS'] *
 predict_modelo <- predict_pls(
   model = estimacion_model,   ### modelo de medida E.3
   technique = predict_DA,           
-      # direct antecedent (predict_DA) consideraría tanto el antecedente como el mediador pedictor del constructo
+      # direct antecedent (predict_DA) consideraría tanto el antecedente como el mediador predictor del constructo
       # earliest antecedent (predict_EA) mediador se excluiría del análisis
   noFolds = 10,                     ### Folds a generar
-  reps = 10)                        ### Numero de repeticiones CV
+  reps = 10)                        ### Número de repeticiones CV
 
 
 sum_predict_modelo <- summary(predict_modelo)
@@ -1023,13 +1026,13 @@ save_plot("fig 5.Bootstrap Modelo Estimado Moderador.pdf")
 
 ## H.4. Evaluar el modelo Moderador
 
-### H.4.1. R^2 Exogenos
+### H.4.1. R\^2 Exógenos
 
 ```{r}
 
 sum_pls_model_mod_med$paths  
 
-plot(sum_pls_model_mod_med$paths[,1], pch = 2, col = "red", main="Betas y R^2 moderador (Exogenos)", 
+plot(sum_pls_model_mod_med$paths[,1], pch = 2, col = "red", main="Betas y R^2 moderador (Exógenos)", 
      xlab = "Variables", ylab = "Valores estimados", xlim = c(0,length(row.names(sum_pls_model_mod_med$paths))+1)
      ) 
 text(sum_pls_model_mod_med$paths[,1],labels = row.names(sum_pls_model_mod_med$paths) , pos = 4)
@@ -1037,10 +1040,10 @@ text(sum_pls_model_mod_med$paths[,1],labels = row.names(sum_pls_model_mod_med$pa
 
 ```
 
-Endogenos
+Endógenos
 
 ```{r}
-plot(sum_pls_model_mod_med$paths[,2], pch = 2, col = "red", main="Betas y R^2 moderador (Endogenos)", 
+plot(sum_pls_model_mod_med$paths[,2], pch = 2, col = "red", main="Betas y R^2 moderador (Endógenos)", 
      xlab = "Variables", ylab = "Valores estimados" , xlim = c(0,length(row.names(sum_pls_model_mod_med$paths))+1) )
 text(sum_pls_model_mod_med$paths[,2],labels = row.names(sum_pls_model_mod_med$paths) , pos = 4)
 
@@ -1168,7 +1171,7 @@ write.xlsx2(x=sum_pls_model_mod_med$fSquare,
             password = NULL)
 ```
 
-### H.4.8.HTMT
+### H.4.8. HTMT
 
 ```{r}
 sum_pls_model_mod_med$validity$htmt 
@@ -1336,7 +1339,7 @@ sum_model3$it_criteria
 
 ```{r}
 # Recogemos los valores BIC de cada modelo. 
-#Nos centramos en este ya que es el que intermedia, el que esta cambiando los modelos 
+#Nos centramos en este ya que es el que intermedia, el que está cambiando los modelos 
 
 itcriteria_vector <- c(summary_estimacion_model$it_criteria['BIC', 'IU'], 
                        sum_model1$it_criteria['BIC', 'IU'],
@@ -1347,7 +1350,7 @@ itcriteria_vector2 <- c(summary_estimacion_model$it_criteria['BIC', 'SNS'],
                        sum_model1$it_criteria['BIC', 'SNS'],
                        sum_model2$it_criteria['BIC', 'SNS'],
                        sum_model3$it_criteria['BIC', 'SNS'])
-# Assign the model names to IT Criteria vector
+# Asignamos los nombres de los modelos a IT Criteria vector
 names(itcriteria_vector) <- c('Original','Model1', 'Model2', 'Model3')
 names(itcriteria_vector2) <- c('Original','Model1', 'Model2', 'Model3')
 ```
@@ -1414,13 +1417,13 @@ En este caso probaremos 2 MGA uno con el Género y otro con la región
 ```{r  message = FALSE, warning=FALSE}
 pls_mga <- estimate_pls_mga(mga_esti, 
                             pls_data2$GENERO == 1, 
-                            nboot=500) ## sobre 2000
+                            nboot=500) ## sobre 5000
 ```
 
 ```{r message = FALSE, warning=FALSE}
 pls_mga_region <- estimate_pls_mga(mga_esti, 
           pls_data2$REGION3 == 1, 
-          nboot=500) ## sobre 2000
+          nboot=500) ## sobre 5000
 ```
 
 ## J.3. Análisis del Multigrupo
@@ -1462,14 +1465,14 @@ write.xlsx2(x=pls_mga  ,
 
 ## J.4. Análisis MICOM
 
-NOTA: Utilizaremos paquete cSEM y sentencia en Lavaan
+NOTA: Utilizaremos paquete cSEM y sentencias en Lavaan
 
-Modelo de medida y estructural
+Modelo de medida y estructural se crean en conjunto entre ""
 
 ```{r message = FALSE, warning=FALSE}
 cSmodel2 <- "
 # modelo estructural 
-SNS  ~ IU +  HA
+SNS  ~ IU +  HA   
 IU  ~  HA + SI + PE
 # modelo de medida
 PE =~ PE1 + PE2 + PE3 + PE4
@@ -1483,7 +1486,7 @@ SNS =~ U1 + U2+ U3 + U4
 Generamos data y probamos los modelos
 
 ```{r message = FALSE, warning=FALSE}
-#1 Data Genero
+#1 Data género
 g11 <- pls_data2[(pls_data2$GENERO==1),]
 g12 <- pls_data2[(pls_data2$GENERO!=1 ),]
 
@@ -1495,7 +1498,7 @@ csem_results1 <- csem(.data = g11, cSmodel2)
 csem_results2 <- csem(.data = g12, cSmodel2)
 
 
-## Analisis con cSEM
+## Análisis con cSEM
 csem_results1 <- csem(.data = g11, cSmodel2)
 csem_results2 <- csem(.data = g12, cSmodel2)
 
@@ -1503,7 +1506,7 @@ csem_results2 <- csem(.data = g12, cSmodel2)
 verify(csem_results1)
 verify(csem_results2)
 
-## Analisis con cSEM
+## Análisis con cSEM
 csem_results1 <- csem(.data = g21, cSmodel2)
 csem_results2 <- csem(.data = g22, cSmodel2)
 
@@ -1520,11 +1523,11 @@ Test MICOM
 
 csem_results <- csem(.data = list("group1" = g11, "group2" = g12), # Data creada por grupo
                       cSmodel2, .resample_method = "bootstrap", 
-                     .R = 500) ##Subir numero
+                     .R = 500) ##Subir número
 
 
 testMICOM(csem_results, 
-          .R = 500)  ##Subir numero
+          .R = 500)  ##Subir número
 ```
 
 Test de comparacion MGA
@@ -1534,7 +1537,7 @@ testmgd <- testMGD(csem_results, .parameters_to_compare = NULL,
                    .alpha = 0.05,
         .approach_p_adjust = c("none", "bonferroni"),   ## Tipo de ajuste a los p
         .R_permutation         = 60,
-        .R_bootstrap = 60,  #Subir numero
+        .R_bootstrap = 60,  #Subir número
         .saturated             = FALSE,
         .approach_mgd = "all", #test a aplicar 
         .output_type           = "complete", #"c("complete", "structured"),
@@ -1547,7 +1550,7 @@ testmgd
 
 # K. Análisis Segundo Orden
 
-Data contiene TRI el cual está conformado por 4 constructos, asumiremos que corresponde a un constructo de segundo orden el qye afecta a IU
+Data contiene TRI el cual está conformado por 4 constructos, asumiremos que corresponde a un constructo de segundo orden el que afecta a IU
 
 ## K.1. Evaluar constructos de orden inferior
 
@@ -1616,12 +1619,12 @@ plot(estimacion_model_1)
 
 plot(summary_m_1$reliability, title =  "Fig. : Fiabilidad orden inferior")
 
-plot(summary_m_1$paths[,1], pch = 2, col = "red", main="Betas y R^2 (Exogenos)", 
+plot(summary_m_1$paths[,1], pch = 2, col = "red", main="Betas y R^2 (Exógenos)", 
      xlab = "Variables", ylab = "Valores estimados", xlim = c(0,length(row.names(summary_m_1$paths))+1)
      ) 
 text(summary_m_1$paths[,1],labels = row.names(summary_m_1$paths) , pos = 4)
 
-plot(summary_m_1$paths[,2], pch = 2, col = "red", main="Betas y R^2 (Endogenos)", 
+plot(summary_m_1$paths[,2], pch = 2, col = "red", main="Betas y R^2 (Endógenos)", 
      xlab = "Variables", ylab = "Valores estimados" , xlim = c(0,length(row.names(summary_m_1$paths))+1) )
 text(summary_m_1$paths[,2],labels = row.names(summary_m_1$paths) , pos = 4)
 
@@ -1686,8 +1689,8 @@ estimacion_model_2 <- estimate_pls(data = pls_data2,
                                       structural_model = m_estruc_2,   # K.2.2.
                                       inner_weights = path_weighting,  
                                       # path_weighting para path weighting (default) o path_factorial para factor weighting,
-                                      missing = mean_replacement, #Reemplazar los valores perdido mean es default
-                                      missing_value = '-99' )
+                                      missing = mean_replacement, #Reemplazar los valores perdidos por defecto mean
+                                      missing_value = '-99' ) #indicador de valores perdidos
 
 plot(estimacion_model_2)
 
@@ -1702,8 +1705,8 @@ estimacion_model_3 <- estimate_pls(data = pls_data2,
                                       structural_model = m_estruc_2,   # K.2.2.
                                       inner_weights = path_weighting,  
                                       # path_weighting para path weighting (default) o path_factorial para factor weighting,
-                                      missing = mean_replacement, #Reemplazar los valores perdido mean es default
-                                      missing_value = '-99' )
+                                      missing = mean_replacement, #Reemplazar los valores perdidos por defecto mean
+                                      missing_value = '-99' ) #indicador de valores perdidos
 
 plot(estimacion_model_3)
 
@@ -1715,12 +1718,12 @@ summary_m_3 = summary(estimacion_model_3)
 ```{r}
 plot(summary_m_2$reliability, title =  "Fig. : Fiabilidad orden inferior")
 
-plot(summary_m_2$paths[,1], pch = 2, col = "red", main="Betas y R^2 (Exogenos)", 
+plot(summary_m_2$paths[,1], pch = 2, col = "red", main="Betas y R^2 (Exógenos)", 
      xlab = "Variables", ylab = "Valores estimados", xlim = c(0,length(row.names(summary_m_2$paths))+1)
      ) 
 text(summary_m_2$paths[,1],labels = row.names(summary_m_2$paths) , pos = 4)
 
-plot(summary_m_2$paths[,2], pch = 2, col = "red", main="Betas y R^2 (Endogenos)", 
+plot(summary_m_2$paths[,2], pch = 2, col = "red", main="Betas y R^2 (Endógenos)", 
      xlab = "Variables", ylab = "Valores estimados" , xlim = c(0,length(row.names(summary_m_2$paths))+1) )
 text(summary_m_2$paths[,2],labels = row.names(summary_m_2$paths) , pos = 4)
 
@@ -1738,7 +1741,7 @@ summary_m_2$validity$cross_loadings
 boot_m_2 <- bootstrap_model(seminr_model = estimacion_model_2 , #K.2.3. a
                 nboot = 500,  ### N° Subsamples  5000<
                 cores = parallel::detectCores(),                      #CPU cores -parallel processing
-                seed = 123)    
+                seed = 123)    #Fijar la semilla 
 plot(boot_m_2)
 sum_boot_m_2 <- summary(boot_m_2, alpha=0.05 )  ### Intervalo de confianza, en este caso es dos colas 90%
 ```
@@ -1767,12 +1770,12 @@ sum_boot_m_2$bootstrapped_paths
 ```{r}
 plot(summary_m_3$reliability, title =  "Fig. : Fiabilidad orden inferior")
 
-plot(summary_m_3$paths[,1], pch = 2, col = "red", main="Betas y R^2 (Exogenos)", 
+plot(summary_m_3$paths[,1], pch = 2, col = "red", main="Betas y R^2 (Exógenos)", 
      xlab = "Variables", ylab = "Valores estimados", xlim = c(0,length(row.names(summary_m_3$paths))+1)
      ) 
 text(summary_m_3$paths[,1],labels = row.names(summary_m_3$paths) , pos = 4)
 
-plot(summary_m_3$paths[,2], pch = 2, col = "red", main="Betas y R^2 (Endogenos)", 
+plot(summary_m_3$paths[,2], pch = 2, col = "red", main="Betas y R^2 (Endógenos)", 
      xlab = "Variables", ylab = "Valores estimados" , xlim = c(0,length(row.names(summary_m_3$paths))+1) )
 text(summary_m_3$paths[,2],labels = row.names(summary_m_3$paths) , pos = 4)
 
@@ -1814,9 +1817,9 @@ specific_effect_significance(boot_seminr_model = boot_m_3,
 sum_boot_m_3$bootstrapped_paths  
 ```
 
-# L. Analisis Pathmox
+# L. Análisis Pathmox
 
-## L.1. Defición modelo
+## L.1. Definición modelo
 
 Definir modelo usando laavan syntax.
 
@@ -1837,7 +1840,7 @@ SNS =~ U1 + U2+ U3 + U4
 "
 ```
 
-## L.2. Analisis con cSEM
+## L.2. Análisis con cSEM
 
 ```{r  message = FALSE, warning=FALSE}
 est_model <- csem(.data = pls_data2, .model = cSmodel)
@@ -1852,7 +1855,8 @@ bootstrap<- csem(.data = pls_data2, .model = cSmodel, .resample_method = "bootst
 
 ## L.3. Configurando las variables
 
-Variables deben estar como factor
+*Nota* Variables deben estar como factor y no deben contener puntos "."
+
 
 ```{r}
 pls_data2$GENDER2= as.factor(pls_data2$GENDER)
@@ -1865,54 +1869,59 @@ pls_data2$EXP2= as.factor(pls_data2$EXP)
 pls_data2$SOC2= as.factor(pls_data2$SOC)
 ```
 
+En este caso creamos una variable de ejemplo en la cual se asigna a un tipo de TRI de acuerdo con el mayor valor presentado. 
+
 ```{r}
+#Sumarizamos por TRI
 pls_data2$TRI_A = pls_data2$TRI1 + pls_data2$TRI2 + pls_data2$TRI3 + pls_data2$TRI4
 pls_data2$TRI_B = pls_data2$TRI5 + pls_data2$TRI6 + pls_data2$TRI7 + pls_data2$TRI8
 pls_data2$TRI_C = pls_data2$TRI9 + pls_data2$TRI10 + pls_data2$TRI11 + pls_data2$TRI12
 pls_data2$TRI_D = pls_data2$TRI13 + pls_data2$TRI14 + pls_data2$TRI15 + pls_data2$TRI16
+
+#Asignamos a un tipo
 pls_data2$TRI_T <- ifelse(pls_data2$TRI_B <= pls_data2$TRI_A & pls_data2$TRI_C <= pls_data2$TRI_A
         & pls_data2$TRI_D <= pls_data2$TRI_A, 1, 
         ifelse (pls_data2$TRI_A <= pls_data2$TRI_B & pls_data2$TRI_C <= pls_data2$TRI_B
           & pls_data2$TRI_D <= pls_data2$TRI_B, 2, 
           ifelse (pls_data2$TRI_A < pls_data2$TRI_C & pls_data2$TRI_B <= pls_data2$TRI_C
             & pls_data2$TRI_D <= pls_data2$TRI_C, 3, 4)))
-pls_data2$TRI_T3= pls_data2$TRI_T
+
+#cambiamos el tipo a factor
 pls_data2$TRI_T2= as.factor(pls_data2$TRI_T)
 ```
 
-Genero grupo de categoricas
+Genero grupo de categóricas
 
 ```{r}
 categoricas2 <- c( #"EXP2",
-  "EDU2", "SOC2" , "WSTATUS2", "RETIRED2"   ,"GENDER2" , "GENERATION2",  "REGION2", "TRI_T2")
+  "EDU2", "SOC2" , "WSTATUS2", "RETIRED2"   ,"GENDER2" , 
+  "GENERATION2",  "REGION2", 
+  "TRI_T2")
 ```
 
-Conjunto de datos con categoricas
+Conjunto de datos con categóricas
 
 ```{r}
 CSIcatvar <- pls_data2[, categoricas2]
 ```
 
-## L.4. Generacion modelo y resultado
+## L.4. Generación modelo y resultado
 
-Ejecutar analisis Phatmox (Lamberti et al., 2016; 2017)
+Ejecutar análisis Phatmox (ver Lamberti et al., 2016; 2017)
 
 ```{r  message = FALSE, warning=FALSE}
 csi.pathmox = pls.pathmox(
   .model = cSmodel ,
   .data  = pls_data2,   
-  .catvar= CSIcatvar,  ## Variables categoricas a ser utilizadas 
-  # .scheme= 'centroid', 'factorial', 'path' defecto Tupo de esquema de ponderación interna
-  .size = 0.10, #minimo de observaciones en porcentaje
-  .size_candidate = 50, #minimo de observaciones en cantidad  por defecto es 50
-  # .consistent = TRUE, #Default
-  .alpha = 0.05,   ### umbral mínimo de importancia  defecto 0.05
-  .deep = 5        ### Maxima profundidad de los arboles
+  .catvar= CSIcatvar,  ## Variables categóricas a ser utilizadas 
+  # .scheme= 'centroid', 'factorial', 'path' defecto Tipo de esquema de ponderación interna
+  .size = 0.10, #mínimo de observaciones en porcentaje
+  .size_candidate = 15, #mínimo de observaciones en cantidad  por defecto es 50
+  # .consistent = TRUE, #defecto es TRUE
+  .alpha = 0.05,   ### umbral mínimo de importancia por defecto 0.05
+  .deep = 8        ### Máxima profundidad del arbol
   ) 
-```
 
-```{r}
-plot(csi.pathmox) 
 ```
 
 Ranking de importancia de las variables
